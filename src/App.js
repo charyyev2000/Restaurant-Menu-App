@@ -7,8 +7,10 @@ import {
 } from "react-router-dom";
 import Admin from "./Admin/Admin";
 import Products from "./Products/Products";
+import Product from "./Products/Product";
 import { css } from "@emotion/css";
 import Nav from "./Common/Nav";
+import ProductsIndex from "./Products/ProductsIndex";
 
 const AppStyles = css`
   margin: 50px auto;
@@ -29,7 +31,10 @@ const App = () => {
         <div className="container">
           <Nav />
           <Routes>
-            <Route path="/" element={<Products />} />
+            <Route path="/" element={<Products />}>
+              <Route path="/" element={<ProductsIndex />} />
+              <Route path=":id" element={<Product />} />
+            </Route>
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
